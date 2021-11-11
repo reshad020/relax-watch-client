@@ -7,25 +7,31 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Container, Grid } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
+import bg from '../../../images/top-banner.png'
 
 const ExtraSection = () => {
+    const bgBanner = {
+        background:`url(${bg})`,
+        backgroundPosition: 'center top',
+        
+    }
     return (
     <Container sx={{mt:5}}>
         <Typography sx={{textAlign:'center',fontWeight:'600',margin:'50px auto',fontSize:'20px'}}>Stories by- Relax Watch Writers</Typography>
             <Grid container spacing={2} >
                 <Grid xs={12} md={6} sx={{display:'flex',justifyContent:'center',alignItems:'center'}} >
-                    <Card sx={{ maxWidth: 345 }}>
+                    <Card sx={{ maxWidth: 345 }}  style={bgBanner}>
                     <CardMedia
                         component="img"
                         alt="green iguana"
                         height="140"
                         image="https://hips.hearstapps.com/amv-prod-gp.s3.amazonaws.com/gearpatrol/wp-content/uploads/2017/10/Phillips-Watch-Auction-gear-patrol-lead-full.jpg"
                     />
-                    <CardContent>
+                    <CardContent  sx={{color:'wheat'}}>
                         <Typography gutterBottom variant="h5" component="div">
                         Antique Watch from 1800s
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" sx={{color:'azure'}}>
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt necessitatibus quasi doloremque hic corrupti incidunt quidem similique enim minus possimus.
                         </Typography>
                     </CardContent>
@@ -36,18 +42,18 @@ const ExtraSection = () => {
                     </Card>
                 </Grid>
                 <Grid xs={12} md={6} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                    <Card sx={{ maxWidth: 345 }}>
+                    <Card sx={{ maxWidth: 345 }} style={bgBanner}>
                     <CardMedia
                         component="img"
                         alt="green iguana"
                         height="140"
                         image="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/paul-newman-rolex-1567591928.jpg"
                     />
-                    <CardContent>
+                    <CardContent sx={{color:'wheat'}}>
                         <Typography gutterBottom variant="h5" component="div">
                         Most expensive Watches in history
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" sx={{color:'azure'}}>
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati delectus ad accusamus totam placeat.
                         </Typography>
                     </CardContent>
