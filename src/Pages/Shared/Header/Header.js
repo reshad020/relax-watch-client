@@ -7,8 +7,11 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../Hooks/useAuth';
+import { Avatar } from '@mui/material';
 
 const Header =() => {
+  const { user,logOut } =useAuth();
     return(
         <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -26,12 +29,21 @@ const Header =() => {
             Relax Watch
           </Typography>
           
+          {
+            user.email?
+            <div style={{display:'flex'}}>
+              <Avatar alt={user.email} src='nothing' sx={{width:'30px',height:'30px'}}></Avatar>
+              <Button color="inherit" sx={{textDecoration:'none',color:'white'}} onClick={logOut}>Logout</Button>
+            </div>
+            :
+            <Link to="/login">
+              <Button color="inherit" sx={{textDecoration:'none',color:'white'}}>Login</Button>
+            </Link>
+          }
           <Link to="/review">
           <Button color="inherit" sx={{textDecoration:'none',color:'white'}}>Review</Button>
           </Link>
-          <Link to="/login">
-          <Button color="inherit" sx={{textDecoration:'none',color:'white'}}>Login</Button>
-          </Link>
+          
         </Toolbar>
       </AppBar>
     </Box>

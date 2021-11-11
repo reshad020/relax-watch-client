@@ -1,4 +1,4 @@
-import initializeFirebase from "../Pages/Login/FIrebase/firebase.init";
+import initializeFirebase from "../Pages/Firebase/firebase.init";
 import { getAuth, createUserWithEmailAndPassword, signOut,onAuthStateChanged, signInWithEmailAndPassword   } from "firebase/auth";
 import { useEffect, useState } from "react";
 
@@ -8,13 +8,14 @@ const useFriebase = () =>{
     const [loading,setLaoding] = useState(true)
     const auth = getAuth();
 
-    const registerWithEmailAndPassword = (email,password) =>{
+    const registerWithEmailAndPassword = (email,password,history) =>{
         setLaoding(true)
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                console.log('success')
+                history.replace('/');
+
                 // ...
             })
             .catch((error) => {
@@ -26,13 +27,16 @@ const useFriebase = () =>{
             .finally(() => setLaoding(false));
     }
 
-    const loginWithEmail = (email,password)=>{
+    const loginWithEmail = (email,password,history,location)=>{
         setLaoding(true)
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
+                const path = location?.state?.from || '/'
+                history.replace(path);
                 // Signed in 
                 const user = userCredential.user;
                 // ...
+                
             })
             .catch((error) => {
                 const errorCode = error.code;

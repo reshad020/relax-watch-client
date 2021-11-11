@@ -12,19 +12,26 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-
+import { NavLink,useHistory,useLocation } from 'react-router-dom';
+import useAuth from '../../../Hooks/useAuth';
 
 const theme = createTheme();
 
-export default function SignIn() {
+const Login = () => {
+  const {loginWithEmail } = useAuth();
+  const history = useHistory();
+  const location = useLocation();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
+    const email = data.get('email')
+    const password = data.get('password');
+    loginWithEmail(email,password,history,location);
     console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+      email: email,
+      password: password,
     });
   };
 
@@ -86,9 +93,10 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
+              Don't have an account? 
+                <NavLink to="/register">
+                  <Button>Sign Up</Button>
+                </NavLink>
               </Grid>
             </Grid>
           </Box>
@@ -98,3 +106,5 @@ export default function SignIn() {
     </ThemeProvider>
   );
 }
+
+export default Login;

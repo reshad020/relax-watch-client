@@ -5,10 +5,15 @@ import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login/Login'
 import Review from './Pages/Review/Review';
 import AddProduct from './Pages/AddProduct/AddProduct';
+import Register from './Pages/Login/Register/Register';
+import AuthProvider from './Context/AuthProvider/AuthProvider';
+import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
+import PrivatePurchase from './Pages/PrivatePurchase/PrivatePurchase';
 
 function App() {
   return (
     <div>
+      <AuthProvider>
       <BrowserRouter>
         <Switch>
           
@@ -21,14 +26,21 @@ function App() {
           <Route exact path="/login">
             <Login></Login>
           </Route>
-          <Route exact path="/review">
+          <PrivateRoute exact path="/review">
             <Review></Review>
+          </PrivateRoute>
+          <Route exact path="/register">
+            <Register></Register>
           </Route>
-          <Route exact path="/addproduct">
+          <PrivateRoute exact path="/addproduct">
             <AddProduct></AddProduct>
-          </Route>
+          </PrivateRoute>
+          <PrivateRoute exact path="/purchase/:id">
+            <PrivatePurchase></PrivatePurchase>
+          </PrivateRoute>
         </Switch>
-      </BrowserRouter>
+      </BrowserRouter> 
+      </AuthProvider>
     </div>
   );
 }

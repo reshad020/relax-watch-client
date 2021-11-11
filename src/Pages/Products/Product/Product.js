@@ -6,9 +6,10 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 
 const Product = (props) => {
-    const {name,details,price,img} = props.product;
+    const { name,details,price,img,_id } = props.product;
     return (
         <Grid sx={12} sm={4} sx={{margin:'20px auto'}}>
             <Card sx={{ maxWidth: 285 }}>
@@ -28,7 +29,7 @@ const Product = (props) => {
                 </CardContent>
                 <CardActions>
                     <Button size="small">$ {price}</Button>
-                    <Button size="small">Purchase Now</Button>
+                    <Link to={`/purchase/${_id}`}> <Button size="small">Purchase Now</Button></Link>
                 </CardActions>
             </Card>
         </Grid>
