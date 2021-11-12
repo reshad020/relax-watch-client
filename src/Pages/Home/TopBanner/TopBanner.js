@@ -36,11 +36,11 @@ const TopBanner = () => {
             <Grid  xs={12} md={6} sx={{margin:'auto auto'}}>
                 <Paper
                     component="form"
-                    sx={{  display: 'flex', alignItems: 'center',margin:'auto auto', width: 400 }}
+                    sx={{  display: 'flex', alignItems: 'center',margin:'auto auto', width:'300px' }}
                     >
                     
                     <InputBase
-                        sx={{ml: 1, flex: 1 }}
+                        sx={{width:'100%' }}
                         placeholder="Search For your favourite watch"
                         inputProps={{ 'aria-label': 'search google maps' }}
                     />

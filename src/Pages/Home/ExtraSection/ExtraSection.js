@@ -18,9 +18,9 @@ const ExtraSection = () => {
     return (
     <Container sx={{mt:5}}>
         <Typography sx={{textAlign:'center',fontWeight:'600',margin:'50px auto',fontSize:'20px'}}>Stories by- Relax Watch Writers</Typography>
-            <Grid container spacing={2} >
-                <Grid xs={12} md={6} sx={{display:'flex',justifyContent:'center',alignItems:'center'}} >
-                    <Card sx={{ maxWidth: 345 }}  style={bgBanner}>
+            <Grid container  >
+                <Grid xs={12} md={6}  sx={{display:'flex',justifyContent:'center',alignItems:'center',my:3}}>
+                    <Card sx={{ maxWidth: 345 }}  style={bgBanner} >
                     <CardMedia
                         component="img"
                         alt="green iguana"

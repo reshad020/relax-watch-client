@@ -1,8 +1,16 @@
 import { Container, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import Product from '../Product/Product';
+import bg from '../../../images/top-banner.png'
 
 const Products = () => {
+    const bgBanner = {
+        background:`url(${bg})`,
+        backgroundPosition: 'center',
+        
+        
+    }
+
     const [products,setProducts] = useState([]);
 
     useEffect(() => {
@@ -22,8 +30,8 @@ const Products = () => {
     // .then(res => res.json())
     // .then(data => 
     return (
-        <Container>
-            <Typography variant='h4' sx={{textAlign:'center',marginX:'auto',marginY:'30px'}}>Watch Collection</Typography>
+        <Container style={bgBanner} >
+            <Typography variant='h4' sx={{textAlign:'center',marginX:'auto',my:5,color:'wheat'}}>Watch Collection</Typography>
             <Grid container sx={{mt:'30px'}}>
            {
                products.map(product => <Product product={product}></Product>)

@@ -9,12 +9,18 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import { Avatar } from '@mui/material';
+import bg from '../../../images/top-banner.png'
 
 const Header =() => {
+  const bgBanner = {
+    background:`url(${bg})`,
+    backgroundPosition: 'center',
+    
+}
   const { user,logOut } =useAuth();
     return(
         <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={bgBanner} sx={{mb:3}}>
         <Toolbar>
           <IconButton
             size="large"
@@ -32,6 +38,9 @@ const Header =() => {
           {
             user.email?
             <div style={{display:'flex'}}>
+               <Link to="/dashboard">
+              <Button color="inherit" sx={{textDecoration:'none',color:'white'}}>Dashboard</Button>
+              </Link>
               <Avatar alt={user.email} src='nothing' sx={{width:'30px',height:'30px'}}></Avatar>
               <Button color="inherit" sx={{textDecoration:'none',color:'white'}} onClick={logOut}>Logout</Button>
             </div>
@@ -40,9 +49,7 @@ const Header =() => {
               <Button color="inherit" sx={{textDecoration:'none',color:'white'}}>Login</Button>
             </Link>
           }
-          <Link to="/review">
-          <Button color="inherit" sx={{textDecoration:'none',color:'white'}}>Review</Button>
-          </Link>
+         
           
         </Toolbar>
       </AppBar>

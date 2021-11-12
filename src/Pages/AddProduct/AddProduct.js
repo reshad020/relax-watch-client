@@ -4,8 +4,10 @@ import axios from 'axios';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Header from '../Shared/Header/Header';
+import useAuth from '../../Hooks/useAuth'
 
 const AddProduct = () => {
+    const { user } = useAuth();
     const { register, handleSubmit,reset , formState: { errors } } = useForm();
     const onSubmit = data =>{
   
@@ -30,6 +32,7 @@ const AddProduct = () => {
             <form onSubmit={handleSubmit(onSubmit)} >
                 <input {...register("name", { required: true })} placeholder="Name" style={{width:'400px',height:'40px',marginBottom:'15px'}} />
                 <br />
+                
                 <textarea {...register("details")} placeholder="write details" style={{width:'400px',height:'80px',marginBottom:'15px'}}/>
                 <br />
                 <input type="number" {...register("price")} placeholder="Price" style={{width:'400px',height:'40px',marginBottom:'15px'}} />

@@ -5,7 +5,7 @@ import useAuth from '../../Hooks/useAuth';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { Box } from '@mui/system';
-import { Link } from 'react-router-dom';
+
 
 
 
@@ -62,12 +62,17 @@ const PrivatePurchase = () => {
 
                 <Box sx={{}}>
                 <form onSubmit={handleSubmit(onSubmit)} >
+                    
+                    <input {...register("email")} defaultValue={user.email}  style={{width:'400px',height:'40px',marginBottom:'15px'}} />
+                    <br />
                     <input {...register("name", { required: true })} placeholder="Name" style={{width:'400px',height:'40px',marginBottom:'15px'}} />
                     
-                    <br />
+                   
+                    
+                    <br/>
                     <input type="number" {...register("phoneNumber")} placeholder="Phone Number" style={{width:'400px',height:'40px',marginBottom:'15px'}} />
                     <br />
-                    <input {...register("address")} placeholder="Your Address"style={{width:'400px',height:'40px',marginBottom:'15px'}}/>
+                    <input {...register("address")} placeholder="Your Address" style={{width:'400px',height:'40px',marginBottom:'15px'}}/>
                     <br />
                     <input type="submit" style={{width:'400px',height:'30px',backgroundColor:'indigo',color:'whitesmoke'}} />
                 </form>

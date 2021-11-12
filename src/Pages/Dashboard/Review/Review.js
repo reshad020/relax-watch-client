@@ -1,7 +1,7 @@
 import { Button, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
-import Header from '../Shared/Header/Header';
+
 import axios from 'axios';
 
 const Review = () => {
@@ -33,7 +33,7 @@ const Review = () => {
     }
     return (
         <div>
-            <Header></Header>
+            
             <Typography variant="h4" sx={{my:5,textAlign:'center'}}>Add a review</Typography>
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <form style={{display:'flex',flexDirection:'column',width:'500px'}} onSubmit={handleReviewSubmit} id="form">
