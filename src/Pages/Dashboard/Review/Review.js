@@ -25,7 +25,7 @@ const Review = () => {
     const handleReviewSubmit = e =>{
         e.preventDefault();
 
-        axios.post('http://localhost:5000/reviews',reviewDetail)
+        axios.post('https://young-springs-44594.herokuapp.com/reviews',reviewDetail)
         .then(res =>{
             alert("added successfully");
             document.getElementById("form").reset()

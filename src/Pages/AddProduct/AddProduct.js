@@ -10,13 +10,9 @@ const AddProduct = () => {
     const { register, handleSubmit,reset , formState: { errors } } = useForm();
     const onSubmit = data =>{
   
-  //     fetch('http://localhost:4000/services')
-  //     .then(res=>res.json())
-  //     .then(data => console.log(data));
+ 
   
-  //    console.log(data);
-  
-     axios.post('http://localhost:5000/products',data)
+     axios.post('https://young-springs-44594.herokuapp.com//products',data)
      .then(res =>{
          alert("added successfully");
          reset();
