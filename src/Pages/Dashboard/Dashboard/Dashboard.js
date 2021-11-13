@@ -32,6 +32,8 @@ import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import useAuth from '../../../Hooks/useAuth';
 import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 import AddProduct from '../../AddProduct/AddProduct';
+import ManageProduct from '../ManageProduct/ManageProduct';
+import ManageOrder from '../ManageOrder/ManageOrder';
 
 const drawerWidth = 200;
 
@@ -52,14 +54,14 @@ const Dashboard = (props) => {
         <div style={{display:'flex',flexDirection:'column'}}>
 
         {
-          admin? <Box>
+          admin? <Box sx={{display:'flex',flexDirection:'column'}}>
           <Link to={`${url}/makeadmin` }style={{textDecoration:'none'}}> <Button>Make Admin</Button> </Link>
-          <Link to={`${url}/manageorder` }style={{textDecoration:'none'}}> <Button>Manage Products</Button> </Link>
-          <Link to={`${url}/manageproduct` }style={{textDecoration:'none'}}> <Button>Manage All Orders</Button> </Link>
+          <Link to={`${url}/manageproduct` }style={{textDecoration:'none'}}> <Button>Manage Products</Button> </Link>
+          <Link to={`${url}/manageorder` }style={{textDecoration:'none'}}> <Button>Manage All Orders</Button> </Link>
           <Link to={`${url}/addproduct` }style={{textDecoration:'none'}}> <Button>Add Product</Button> </Link>
         </Box>
         :
-          <Box>
+          <Box sx={{display:'flex',flexDirection:'column'}}>
             <Link to={`${url}/myorders`} style={{textDecoration:'none'}}> <Button>My orders</Button> </Link>
             <Link to={`${url}/pay` }style={{textDecoration:'none'}}> <Button>Payment</Button> </Link>
             <Link to={`${url}/review` }style={{textDecoration:'none'}}> <Button>Add review</Button> </Link>
@@ -157,6 +159,12 @@ const container = window !== undefined ? () => window().document.body : undefine
                 </Route>
                 <AdminRoute path={`${path}/makeadmin`}>
                     <MakeAdmin></MakeAdmin>
+                </AdminRoute>
+                <AdminRoute path={`${path}/manageproduct`}>
+                    <ManageProduct></ManageProduct>
+                </AdminRoute>
+                <AdminRoute path={`${path}/manageorder`}>
+                    <ManageOrder></ManageOrder>
                 </AdminRoute>
                 <AdminRoute path={`${path}/addproduct`}>
                     <AddProduct></AddProduct>

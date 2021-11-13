@@ -35,6 +35,9 @@ const Header =() => {
             Relax Watch
           </Typography>
           
+          <Link to="/explore">
+              <Button color="inherit" sx={{textDecoration:'none',color:'white'}}>Explore</Button>
+            </Link>
           {
             user.email?
             <div style={{display:'flex'}}>
@@ -45,9 +48,12 @@ const Header =() => {
               <Button color="inherit" sx={{textDecoration:'none',color:'white'}} onClick={logOut}>Logout</Button>
             </div>
             :
+            <div>
+           
             <Link to="/login">
               <Button color="inherit" sx={{textDecoration:'none',color:'white'}}>Login</Button>
             </Link>
+            </div>
           }
          
           
