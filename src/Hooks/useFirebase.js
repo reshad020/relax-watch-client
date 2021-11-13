@@ -1,6 +1,7 @@
 import initializeFirebase from "../Pages/Firebase/firebase.init";
 import { getAuth, createUserWithEmailAndPassword, signOut,onAuthStateChanged, signInWithEmailAndPassword   } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 
 initializeFirebase();
 const useFriebase = () =>{
@@ -55,6 +56,7 @@ const useFriebase = () =>{
         setLaoding(true)
         signOut(auth).then(() => {
             // Sign-out successful.
+            
           }).catch((error) => {
             // An error happened.
           })
@@ -62,7 +64,7 @@ const useFriebase = () =>{
     }
         const saveUser = (userData) =>{
             console.log(userData)
-            fetch('http://localhost:5000/users',{
+            fetch('https://young-springs-44594.herokuapp.com/users',{
                 method:'POST',
                 headers:{
                     'content-type':'application/json'
@@ -90,7 +92,7 @@ const useFriebase = () =>{
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://young-springs-44594.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
     }, [user.email])

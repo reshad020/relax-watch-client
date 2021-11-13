@@ -38,7 +38,7 @@ import ManageOrder from '../ManageOrder/ManageOrder';
 const drawerWidth = 200;
 
 const Dashboard = (props) => { 
-  const {user,admin} = useAuth();
+  const {user,admin,logOut} = useAuth();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
   
@@ -73,7 +73,7 @@ const Dashboard = (props) => {
         
         <Divider />
 
-        <Button>Logout</Button> 
+        <Button onClick={logOut}>Logout</Button> 
         
       </div>
     );
