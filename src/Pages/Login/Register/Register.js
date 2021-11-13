@@ -27,12 +27,15 @@ const Register = () => {
         const data = new FormData(event.currentTarget);
         const email = data.get('email')
         const password = data.get('password')
+        const name = data.get('firstName') + data.get('lastName');
         // eslint-disable-next-line no-console
-        registerWithEmailAndPassword(email,password,history);
+        registerWithEmailAndPassword(email,password,name,history);
         console.log({
           email: email,
           password: password,
         });
+
+        
 
         event.preventDefault();
       };

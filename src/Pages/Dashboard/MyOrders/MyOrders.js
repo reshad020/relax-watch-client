@@ -8,7 +8,7 @@ const MyOrders = () => {
     const [myOrder,setMyOrder] = useState([]);
     console.log(user.email)
     useEffect(() =>{
-        fetch(`http://localhost:5000/orders/${user.email}`)
+        fetch(`https://young-springs-44594.herokuapp.com/orders/${user.email}`)
         .then(res => res.json())
         .then(data => {
             setMyOrder(data)

@@ -16,7 +16,7 @@ const PrivatePurchase = () => {
 
     const [singleProduct,setSingleProduct] = useState({});
     useEffect(() =>{
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://young-springs-44594.herokuapp.com/products/${id}`)
         .then(res => res.json())
         .then(data => setSingleProduct(data))
     },[])
@@ -25,7 +25,7 @@ const PrivatePurchase = () => {
 
     const onSubmit = data =>{
        
-     axios.post('http://localhost:5000/orders',data)
+     axios.post('https://young-springs-44594.herokuapp.com/orders',data)
      .then(res =>{
         alert("added successfully");
          reset();

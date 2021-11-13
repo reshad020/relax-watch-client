@@ -1,12 +1,13 @@
 import { Button, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
-
+import Rating from '@mui/material/Rating';
 import axios from 'axios';
 
 const Review = () => {
     const [name,setName] = useState('');
     const [review,setReview] = useState('')
+    const [value, setValue] = React.useState(2);
 
     const getName = e =>{
         const customerName = e.target.value;
@@ -18,7 +19,8 @@ const Review = () => {
     }
     const reviewDetail = {
         name:name,
-        review:review
+        review:review,
+        rating:value
     }
     const handleReviewSubmit = e =>{
         e.preventDefault();
@@ -34,9 +36,9 @@ const Review = () => {
     return (
         <div>
             
-            <Typography variant="h4" sx={{my:5,textAlign:'center'}}>Add a review</Typography>
+            <Typography variant="h4" sx={{my:2,textAlign:'center'}}>Add a review</Typography>
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                <form style={{display:'flex',flexDirection:'column',width:'500px'}} onSubmit={handleReviewSubmit} id="form">
+                <form style={{display:'flex',flexDirection:'column',width:'300px'}} onSubmit={handleReviewSubmit} id="form">
                     <TextField
                     hiddenLabel
                     id="filled-hidden-label-small"
@@ -56,7 +58,16 @@ const Review = () => {
                     sx={{my:3}}
                     onBlur={getReview}
                     />
-                    <Button variant="contained" type="submit">Submit</Button>
+
+                    <Typography component="legend">Add rating</Typography>
+                        <Rating
+                            name="simple-controlled"
+                            value={value}
+                            onChange={(event, newValue) => {
+                            setValue(newValue);
+                            }}
+                        />
+                    <Button variant="contained" type="submit" sx={{my:3}}>Submit</Button>
                 </form>
             </Box>
         </div>

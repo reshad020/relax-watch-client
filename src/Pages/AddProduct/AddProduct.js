@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import Header from '../Shared/Header/Header';
 import useAuth from '../../Hooks/useAuth'
 
 const AddProduct = () => {
@@ -25,7 +24,7 @@ const AddProduct = () => {
   }
     return (
         <div>
-            <Header></Header>
+            
             <Typography variant="h4" sx={{textAlign:'center',my:5}}>Add a new product</Typography>
 
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>

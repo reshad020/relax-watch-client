@@ -5,14 +5,20 @@ import { useEffect, useState } from "react";
 initializeFirebase();
 const useFriebase = () =>{
     const [user,setUser] = useState({});
-    const [loading,setLaoding] = useState(true)
+    const [loading,setLaoding] = useState(true);
+    const [admin,setAdmin] = useState(false);
     const auth = getAuth();
 
-    const registerWithEmailAndPassword = (email,password,history) =>{
+    const registerWithEmailAndPassword = (email,password,name,history) =>{
         setLaoding(true)
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in 
+                const userData = {
+                                email:email,
+                                name:name};
+                saveUser(userData);
+
                 const user = userCredential.user;
                 history.replace('/');
 
@@ -54,6 +60,18 @@ const useFriebase = () =>{
           })
           .finally(() => setLaoding(false));;
     }
+        const saveUser = (userData) =>{
+            console.log(userData)
+            fetch('http://localhost:5000/users',{
+                method:'POST',
+                headers:{
+                    'content-type':'application/json'
+                },
+                body: JSON.stringify(userData)
+                })
+                .then()
+        }
+               
     
     useEffect(() =>{
         onAuthStateChanged(auth, (user) => {
@@ -71,8 +89,14 @@ const useFriebase = () =>{
     },[])
 
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
 
     return {
+        admin,
         user,
         registerWithEmailAndPassword,
         loading,

@@ -31,9 +31,6 @@ function App() {
           <Route exact path="/register">
             <Register></Register>
           </Route>
-          <PrivateRoute exact path="/addproduct">
-            <AddProduct></AddProduct>
-          </PrivateRoute>
           <PrivateRoute  path="/dashboard">
             <Dashboard></Dashboard>
           </PrivateRoute>

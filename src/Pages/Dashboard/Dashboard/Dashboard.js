@@ -28,10 +28,15 @@ import {
     useParams,
     useRouteMatch
   } from "react-router-dom";
+import MakeAdmin from '../MakeAdmin/MakeAdmin';
+import useAuth from '../../../Hooks/useAuth';
+import AdminRoute from '../../Login/AdminRoute/AdminRoute';
+import AddProduct from '../../AddProduct/AddProduct';
 
 const drawerWidth = 200;
 
 const Dashboard = (props) => { 
+  const {user,admin} = useAuth();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
   
@@ -45,22 +50,25 @@ const Dashboard = (props) => {
         <Toolbar />
         <Divider />
         <div style={{display:'flex',flexDirection:'column'}}>
-        <Link to={`${url}/myorders`} style={{textDecoration:'none'}}> <Button>My orders</Button> </Link>
-         
-         <Link to={`${url}/pay` }style={{textDecoration:'none'}}> <Button>Payment</Button> </Link>
-         <Link to={`${url}/review` }style={{textDecoration:'none'}}> <Button>Add review</Button> </Link>
+
+        {
+          admin? <Box>
+          <Link to={`${url}/makeadmin` }style={{textDecoration:'none'}}> <Button>Make Admin</Button> </Link>
+          <Link to={`${url}/manageorder` }style={{textDecoration:'none'}}> <Button>Manage Products</Button> </Link>
+          <Link to={`${url}/manageproduct` }style={{textDecoration:'none'}}> <Button>Manage All Orders</Button> </Link>
+          <Link to={`${url}/addproduct` }style={{textDecoration:'none'}}> <Button>Add Product</Button> </Link>
+        </Box>
+        :
+          <Box>
+            <Link to={`${url}/myorders`} style={{textDecoration:'none'}}> <Button>My orders</Button> </Link>
+            <Link to={`${url}/pay` }style={{textDecoration:'none'}}> <Button>Payment</Button> </Link>
+            <Link to={`${url}/review` }style={{textDecoration:'none'}}> <Button>Add review</Button> </Link>
+          </Box>
+        }
+        
          
         </div>
-        <List>
-          {['NYTHING', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+        
         <Divider />
 
         <Button>Logout</Button> 
@@ -147,6 +155,12 @@ const container = window !== undefined ? () => window().document.body : undefine
                 <Route path={`${path}/review`}>
                     <Review></Review>
                 </Route>
+                <AdminRoute path={`${path}/makeadmin`}>
+                    <MakeAdmin></MakeAdmin>
+                </AdminRoute>
+                <AdminRoute path={`${path}/addproduct`}>
+                    <AddProduct></AddProduct>
+                </AdminRoute>
             </Switch>
         </Typography>
         <Typography paragraph>
